@@ -3,7 +3,7 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     public GameObject Hero;
-    public GameObject potionPrefab;  
+    public GameObject Prefab;  
     public GameObject openChestPrefab;
 
     private bool isOpened = false;   
@@ -32,7 +32,7 @@ public class Chest : MonoBehaviour
     private void OpenChest()
     {
         
-        Instantiate(potionPrefab, transform.position - new Vector3(0f, 1f, 0f), Quaternion.identity);
+        Instantiate(Prefab, transform.position - new Vector3(0f, 1f, 0f), Quaternion.identity);
         isOpened = true;
         Destroy(gameObject);
         Instantiate(openChestPrefab, transform.position,Quaternion.identity);

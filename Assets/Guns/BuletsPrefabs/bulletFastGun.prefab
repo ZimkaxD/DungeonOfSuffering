@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5035043229955115867}
   - component: {fileID: -3188949044313117949}
   m_Layer: 0
-  m_Name: bulletDefaultGun
+  m_Name: bulletFastGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4850366179811406991}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.411071, y: -4.26702, z: 0}
-  m_LocalScale: {x: 0.15429582, y: 0.16189171, z: 1.0266558}
+  m_LocalPosition: {x: -6.47257, y: -4.24066, z: 0}
+  m_LocalScale: {x: 0.06111966, y: 0.074039556, z: 1.0266558}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,12 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a619775ce13ab44a8d2fd211b866518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 35
   lifetime: 5
   distance: 0.5
   damage: 1
   defaultLvl: 1
   solid:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   lvl: 1

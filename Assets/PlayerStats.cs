@@ -1,9 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Weapons")]
+    public List<GameObject> unlockedWeapons;
+    public GameObject[] allWeapons;
+    public Image weaponIcon;
+
     public int maxHealth = 100;
     public int maxMana = 100;
     public int maxArmor = 50;
@@ -19,7 +25,7 @@ public class PlayerStats : MonoBehaviour
     public float armorRecoveryTimer2;
     public Image[] state_image = new Image[4];
     public DefaultBullet defaultBullet;
-    
+    private Collider2D currentCollider;
 
     private void Start()
     {
@@ -35,7 +41,30 @@ public class PlayerStats : MonoBehaviour
     {
         armorRecoveryTimer += Time.deltaTime;
         armorRecoveryTimer2 += Time.deltaTime;
-        
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            SwitchWeapon();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (currentCollider.CompareTag("Weapon"))
+            {
+                for (int i = 0; i < allWeapons.Length; i++)
+                {
+                    if (currentCollider.name == allWeapons[i].name+"(Clone)")
+                    {
+                        unlockedWeapons.Add(allWeapons[i]);
+                    }
+                }
+                SwitchWeapon();
+                Destroy(currentCollider.gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        currentCollider = other; 
     }
 
     public void TakeDamage(int damage)
@@ -123,5 +152,21 @@ public class PlayerStats : MonoBehaviour
     {
         currentMoney += moneyCount;
 
+    }
+
+    public void SwitchWeapon()
+    {
+        for(int i = 0;i<unlockedWeapons.Count;i++)
+        {
+            if(unlockedWeapons[i].activeInHierarchy)
+            {
+                unlockedWeapons[i].SetActive(false);
+                int nextIndex = (i + 1) % unlockedWeapons.Count;
+                unlockedWeapons[nextIndex].SetActive(true);
+                weaponIcon.sprite = unlockedWeapons[nextIndex].GetComponent<SpriteRenderer>().sprite;
+                weaponIcon.SetNativeSize();
+                break;
+            }
+        }
     }
 }

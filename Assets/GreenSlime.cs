@@ -8,6 +8,7 @@ public class GreenSlime : MonoBehaviour
     private GameObject Hero;
     public GameObject Bolet;
     public Animator animation;
+    public GameObject floatingDamage;
 
     public int damage;
     public int hp = 5;
@@ -120,6 +121,9 @@ public class GreenSlime : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp-=damage;
+        Vector2 damagePos = new Vector2(transform.position.x, transform.position.y + 0.75f);
+        Instantiate(floatingDamage, damagePos, Quaternion.identity);
+        floatingDamage.GetComponentInChildren<FloatingDamage>().damage=damage;
     }
 }
 
