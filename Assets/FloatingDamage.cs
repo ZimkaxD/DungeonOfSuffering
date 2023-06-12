@@ -9,7 +9,7 @@ public class FloatingDamage : MonoBehaviour
     private void Start()
     {
         textMesh = GetComponent<TextMesh>();
-        textMesh.text = "-" + damage;
+        textMesh.text = " " + damage;
     }
 
     public void OnAnimationOver()

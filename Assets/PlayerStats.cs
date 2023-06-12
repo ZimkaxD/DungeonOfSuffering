@@ -10,6 +10,12 @@ public class PlayerStats : MonoBehaviour
     public GameObject[] allWeapons;
     public Image weaponIcon;
 
+    [Header("Key")]
+    public GameObject keyIcon;
+
+    
+
+
     public int maxHealth = 100;
     public int maxMana = 100;
     public int maxArmor = 50;
@@ -21,6 +27,7 @@ public class PlayerStats : MonoBehaviour
     public int currentArmor;
     public int currentMoney;
     private bool isTakingDamage;
+    private bool keyButtonPushed;
     private float armorRecoveryTimer;
     public float armorRecoveryTimer2;
     public Image[] state_image = new Image[4];
@@ -59,6 +66,22 @@ public class PlayerStats : MonoBehaviour
                 SwitchWeapon();
                 Destroy(currentCollider.gameObject);
             }
+            else if(currentCollider.CompareTag("Key"))
+            {
+                keyIcon.SetActive(true);
+                Destroy(currentCollider.gameObject);
+                keyButtonPushed = !keyButtonPushed;
+            }
+        }
+    }
+  
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.CompareTag("Door") && keyButtonPushed && keyIcon.activeInHierarchy)
+        {
+            keyIcon.SetActive(false);
+            other.gameObject.SetActive(false);
+            keyButtonPushed = false;
         }
     }
 
@@ -103,7 +126,7 @@ public class PlayerStats : MonoBehaviour
             if (currentHealth <= 0)
             {
                 
-                SceneManager.LoadScene("Уровень-1 Сцена");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Уровень-1 Сцена");
             }
 
         }

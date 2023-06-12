@@ -9,7 +9,7 @@ public class MeinMenu : MonoBehaviour
     public DefaultBullet defaultBullet;
     public void PlayGame()
     {
-        SceneManager.LoadScene("Уровень-1 Сцена");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Уровень-1 Сцена");
     }
 
     public void QuitGame()

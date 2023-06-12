@@ -19,6 +19,10 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         // ���������� ��������� �������� ��������, ����� � ����
+        if(playerStats==null)
+        {
+            playerStats=GameObject.FindGameObjectWithTag("Hero").GetComponent<PlayerStats>();   
+        }
         healthText.text =  playerStats.currentHealth.ToString();
         armorText.text =  playerStats.currentArmor.ToString();
         manaText.text =  playerStats.currentMana.ToString();

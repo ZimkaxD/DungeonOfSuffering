@@ -39,7 +39,13 @@ public class DefaultBullet : MonoBehaviour
             if (info.collider.CompareTag("Enemy"))
             {
                 info.collider.GetComponent<GreenSlime>().TakeDamage(damage);
+                
             }
+            else if (info.collider.CompareTag("SlimeBoss"))
+            {
+                info.collider.GetComponent<SlimeBoss>().TakeDamage(damage);
+            }
+
             if (info.collider.CompareTag("NPC"))
             {
                 info.collider.GetComponent<NPC>().TakeDamage(damage);

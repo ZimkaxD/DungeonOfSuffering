@@ -12,6 +12,16 @@ TagManager:
   - Wall
   - RoomPoint
   - Rooms
+  - Door
+  - Key
+  - SlimeBoss
+  - Map
+  - GameControll
+  - Room
+  - PointEnemy
+  - Portal
+  - Chest
+  - Potion
   layers:
   - Default
   - TransparentFX

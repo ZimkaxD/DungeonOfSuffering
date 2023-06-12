@@ -7,8 +7,8 @@ public class GreenSlime : MonoBehaviour
     public GameObject[] point = new GameObject[12];
     private GameObject Hero;
     public GameObject Bolet;
-    public Animator animation;
     public GameObject floatingDamage;
+    private AddRoom room;
 
     public int damage;
     public int hp = 5;
@@ -21,6 +21,7 @@ public class GreenSlime : MonoBehaviour
     void Start()
     {
         Hero = GameObject.Find("Hero");
+        room = GetComponentInParent<AddRoom>();
     }
 
 
@@ -91,6 +92,7 @@ public class GreenSlime : MonoBehaviour
         if(hp<=0)
         {
             Destroy(gameObject);
+            room.enemies.Remove(gameObject);
         }
         if(Hero.transform.position.x>transform.position.x)
         {
@@ -123,7 +125,7 @@ public class GreenSlime : MonoBehaviour
         hp-=damage;
         Vector2 damagePos = new Vector2(transform.position.x, transform.position.y + 0.75f);
         Instantiate(floatingDamage, damagePos, Quaternion.identity);
-        floatingDamage.GetComponentInChildren<FloatingDamage>().damage=damage;
+        floatingDamage.GetComponentInChildren<FloatingDamage>().damage=hp;
     }
 }
 
